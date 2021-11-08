@@ -1,0 +1,85 @@
+%{
+	#include<stdio.h>
+	#include<stdlib.h>
+	#include<math.h>
+	#include<string.h>
+	#include "FuncoesE.h"
+	
+	char *tokens[1000];
+	int numtokens=0;
+	struct Regra *regras[1000];
+	int numRegras = 0;
+	struct Sunion sunion;
+	struct Types tps;
+ 
+%}
+
+%token SEMICOLON
+%token BARRA
+%token DOISPONTOS
+%token TYPE
+%token TOKEN
+%token MAIORQ
+%token MENORQ
+%token UNION
+%token PERCENT
+%token NOME
+%token PERCPERC
+%token STAR
+%token RBRACES
+%token LBRACES
+%token STRUCT
+%token CODE
+
+%union{
+	char *ident;
+	}
+
+%type <ident> NOME
+%type <ident> STAR
+
+%%
+
+Programa: Secao1 PERCPERC Regras PERCPERC;
+
+Secao1: Secao1 Config
+		|Config
+      ;
+
+Config:
+       Token
+      | Union
+      | Type;
+
+Regras: Regras Regra 
+      | Regra;
+
+Regra: NOME DOISPONTOS Producoes SEMICOLON;
+
+Producoes: Producoes BARRA Nomes
+         | Nomes;
+
+Nomes: 
+      Nomes2;
+
+Nomes2:  Nomes2 NOME
+		|NOME;
+      
+
+Token: PERCENT TOKEN NOME;
+
+Union: PERCENT UNION LBRACES DecTipos RBRACES;
+
+DecTipos: DecTipos DecTipo
+        | DecTipo;
+
+DecTipo: NOME NOME SEMICOLON
+       | NOME STARS NOME SEMICOLON
+       | STRUCT NOME STARS NOME SEMICOLON;
+
+STARS: STARS STAR
+     | STAR;
+
+Type: PERCENT TYPE MENORQ NOME MAIORQ NOME;
+
+%%

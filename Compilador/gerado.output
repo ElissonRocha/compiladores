@@ -1,0 +1,666 @@
+Terminals unused in grammar
+
+   CODE
+
+
+Grammar
+
+    0 $accept: Programa $end
+
+    1 Programa: Secao1PERCPERCRegrasPERCPERC
+
+    2 Secao1PERCPERCRegrasPERCPERC: Secao1 PERCPERC Regras PERCPERC
+
+    3 Secao1Config: Secao1 Config
+
+    4 Secao1: Secao1Config
+    5       | Config
+
+    6 Config: Token
+    7       | Union
+    8       | Type
+
+    9 RegrasRegra: Regras Regra
+
+   10 Regras: RegrasRegra
+   11       | Regra
+
+   12 NOMEDOISPONTOSProducoesSEMICOLON: NOME DOISPONTOS Producoes SEMICOLON
+
+   13 Regra: NOMEDOISPONTOSProducoesSEMICOLON
+
+   14 ProducoesBARRANomes: Producoes BARRA Nomes
+
+   15 Producoes: ProducoesBARRANomes
+   16          | Nomes
+
+   17 Nomes: Nomes2
+
+   18 Nomes2NOME: Nomes2 NOME
+
+   19 Nomes2: Nomes2NOME
+   20       | NOME
+
+   21 PERCENTTOKENNOME: PERCENT TOKEN NOME
+
+   22 Token: PERCENTTOKENNOME
+
+   23 PERCENTUNIONLBRACESDecTiposRBRACES: PERCENT UNION LBRACES DecTipos RBRACES
+
+   24 Union: PERCENTUNIONLBRACESDecTiposRBRACES
+
+   25 DecTiposDecTipo: DecTipos DecTipo
+
+   26 DecTipos: DecTiposDecTipo
+   27         | DecTipo
+
+   28 NOMENOMESEMICOLON: NOME NOME SEMICOLON
+
+   29 DecTipo: NOMENOMESEMICOLON
+   30        | NOME STARS NOME SEMICOLON
+   31        | STRUCT NOME STARS NOME SEMICOLON
+
+   32 STARSSTAR: STARS STAR
+
+   33 STARS: STARSSTAR
+   34      | STAR
+
+   35 PERCENTTYPEMENORQNOMEMAIORQNOME: PERCENT TYPE MENORQ NOME MAIORQ NOME
+
+   36 Type: PERCENTTYPEMENORQNOMEMAIORQNOME
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+SEMICOLON (258) 12 28 30 31
+BARRA (259) 14
+DOISPONTOS (260) 12
+TYPE (261) 35
+TOKEN (262) 21
+MAIORQ (263) 35
+MENORQ (264) 35
+UNION (265) 23
+PERCENT (266) 21 23 35
+NOME (267) 12 18 20 21 28 30 31 35
+PERCPERC (268) 2
+STAR (269) 32 34
+RBRACES (270) 23
+LBRACES (271) 23
+STRUCT (272) 31
+CODE (273)
+
+
+Nonterminals, with rules where they appear
+
+$accept (19)
+    on left: 0
+Programa (20)
+    on left: 1, on right: 0
+Secao1PERCPERCRegrasPERCPERC (21)
+    on left: 2, on right: 1
+Secao1Config (22)
+    on left: 3, on right: 4
+Secao1 (23)
+    on left: 4 5, on right: 2 3
+Config (24)
+    on left: 6 7 8, on right: 3 5
+RegrasRegra (25)
+    on left: 9, on right: 10
+Regras (26)
+    on left: 10 11, on right: 2 9
+NOMEDOISPONTOSProducoesSEMICOLON (27)
+    on left: 12, on right: 13
+Regra (28)
+    on left: 13, on right: 9 11
+ProducoesBARRANomes (29)
+    on left: 14, on right: 15
+Producoes (30)
+    on left: 15 16, on right: 12 14
+Nomes (31)
+    on left: 17, on right: 14 16
+Nomes2NOME (32)
+    on left: 18, on right: 19
+Nomes2 (33)
+    on left: 19 20, on right: 17 18
+PERCENTTOKENNOME (34)
+    on left: 21, on right: 22
+Token (35)
+    on left: 22, on right: 6
+PERCENTUNIONLBRACESDecTiposRBRACES (36)
+    on left: 23, on right: 24
+Union (37)
+    on left: 24, on right: 7
+DecTiposDecTipo (38)
+    on left: 25, on right: 26
+DecTipos (39)
+    on left: 26 27, on right: 23 25
+NOMENOMESEMICOLON (40)
+    on left: 28, on right: 29
+DecTipo (41)
+    on left: 29 30 31, on right: 25 27
+STARSSTAR (42)
+    on left: 32, on right: 33
+STARS (43)
+    on left: 33 34, on right: 30 31 32
+PERCENTTYPEMENORQNOMEMAIORQNOME (44)
+    on left: 35, on right: 36
+Type (45)
+    on left: 36, on right: 8
+
+
+State 0
+
+    0 $accept: . Programa $end
+
+    PERCENT  shift, and go to state 1
+
+    Programa                            go to state 2
+    Secao1PERCPERCRegrasPERCPERC        go to state 3
+    Secao1Config                        go to state 4
+    Secao1                              go to state 5
+    Config                              go to state 6
+    PERCENTTOKENNOME                    go to state 7
+    Token                               go to state 8
+    PERCENTUNIONLBRACESDecTiposRBRACES  go to state 9
+    Union                               go to state 10
+    PERCENTTYPEMENORQNOMEMAIORQNOME     go to state 11
+    Type                                go to state 12
+
+
+State 1
+
+   21 PERCENTTOKENNOME: PERCENT . TOKEN NOME
+   23 PERCENTUNIONLBRACESDecTiposRBRACES: PERCENT . UNION LBRACES DecTipos RBRACES
+   35 PERCENTTYPEMENORQNOMEMAIORQNOME: PERCENT . TYPE MENORQ NOME MAIORQ NOME
+
+    TYPE   shift, and go to state 13
+    TOKEN  shift, and go to state 14
+    UNION  shift, and go to state 15
+
+
+State 2
+
+    0 $accept: Programa . $end
+
+    $end  shift, and go to state 16
+
+
+State 3
+
+    1 Programa: Secao1PERCPERCRegrasPERCPERC .
+
+    $default  reduce using rule 1 (Programa)
+
+
+State 4
+
+    4 Secao1: Secao1Config .
+
+    $default  reduce using rule 4 (Secao1)
+
+
+State 5
+
+    2 Secao1PERCPERCRegrasPERCPERC: Secao1 . PERCPERC Regras PERCPERC
+    3 Secao1Config: Secao1 . Config
+
+    PERCENT   shift, and go to state 1
+    PERCPERC  shift, and go to state 17
+
+    Config                              go to state 18
+    PERCENTTOKENNOME                    go to state 7
+    Token                               go to state 8
+    PERCENTUNIONLBRACESDecTiposRBRACES  go to state 9
+    Union                               go to state 10
+    PERCENTTYPEMENORQNOMEMAIORQNOME     go to state 11
+    Type                                go to state 12
+
+
+State 6
+
+    5 Secao1: Config .
+
+    $default  reduce using rule 5 (Secao1)
+
+
+State 7
+
+   22 Token: PERCENTTOKENNOME .
+
+    $default  reduce using rule 22 (Token)
+
+
+State 8
+
+    6 Config: Token .
+
+    $default  reduce using rule 6 (Config)
+
+
+State 9
+
+   24 Union: PERCENTUNIONLBRACESDecTiposRBRACES .
+
+    $default  reduce using rule 24 (Union)
+
+
+State 10
+
+    7 Config: Union .
+
+    $default  reduce using rule 7 (Config)
+
+
+State 11
+
+   36 Type: PERCENTTYPEMENORQNOMEMAIORQNOME .
+
+    $default  reduce using rule 36 (Type)
+
+
+State 12
+
+    8 Config: Type .
+
+    $default  reduce using rule 8 (Config)
+
+
+State 13
+
+   35 PERCENTTYPEMENORQNOMEMAIORQNOME: PERCENT TYPE . MENORQ NOME MAIORQ NOME
+
+    MENORQ  shift, and go to state 19
+
+
+State 14
+
+   21 PERCENTTOKENNOME: PERCENT TOKEN . NOME
+
+    NOME  shift, and go to state 20
+
+
+State 15
+
+   23 PERCENTUNIONLBRACESDecTiposRBRACES: PERCENT UNION . LBRACES DecTipos RBRACES
+
+    LBRACES  shift, and go to state 21
+
+
+State 16
+
+    0 $accept: Programa $end .
+
+    $default  accept
+
+
+State 17
+
+    2 Secao1PERCPERCRegrasPERCPERC: Secao1 PERCPERC . Regras PERCPERC
+
+    NOME  shift, and go to state 22
+
+    RegrasRegra                       go to state 23
+    Regras                            go to state 24
+    NOMEDOISPONTOSProducoesSEMICOLON  go to state 25
+    Regra                             go to state 26
+
+
+State 18
+
+    3 Secao1Config: Secao1 Config .
+
+    $default  reduce using rule 3 (Secao1Config)
+
+
+State 19
+
+   35 PERCENTTYPEMENORQNOMEMAIORQNOME: PERCENT TYPE MENORQ . NOME MAIORQ NOME
+
+    NOME  shift, and go to state 27
+
+
+State 20
+
+   21 PERCENTTOKENNOME: PERCENT TOKEN NOME .
+
+    $default  reduce using rule 21 (PERCENTTOKENNOME)
+
+
+State 21
+
+   23 PERCENTUNIONLBRACESDecTiposRBRACES: PERCENT UNION LBRACES . DecTipos RBRACES
+
+    NOME    shift, and go to state 28
+    STRUCT  shift, and go to state 29
+
+    DecTiposDecTipo    go to state 30
+    DecTipos           go to state 31
+    NOMENOMESEMICOLON  go to state 32
+    DecTipo            go to state 33
+
+
+State 22
+
+   12 NOMEDOISPONTOSProducoesSEMICOLON: NOME . DOISPONTOS Producoes SEMICOLON
+
+    DOISPONTOS  shift, and go to state 34
+
+
+State 23
+
+   10 Regras: RegrasRegra .
+
+    $default  reduce using rule 10 (Regras)
+
+
+State 24
+
+    2 Secao1PERCPERCRegrasPERCPERC: Secao1 PERCPERC Regras . PERCPERC
+    9 RegrasRegra: Regras . Regra
+
+    NOME      shift, and go to state 22
+    PERCPERC  shift, and go to state 35
+
+    NOMEDOISPONTOSProducoesSEMICOLON  go to state 25
+    Regra                             go to state 36
+
+
+State 25
+
+   13 Regra: NOMEDOISPONTOSProducoesSEMICOLON .
+
+    $default  reduce using rule 13 (Regra)
+
+
+State 26
+
+   11 Regras: Regra .
+
+    $default  reduce using rule 11 (Regras)
+
+
+State 27
+
+   35 PERCENTTYPEMENORQNOMEMAIORQNOME: PERCENT TYPE MENORQ NOME . MAIORQ NOME
+
+    MAIORQ  shift, and go to state 37
+
+
+State 28
+
+   28 NOMENOMESEMICOLON: NOME . NOME SEMICOLON
+   30 DecTipo: NOME . STARS NOME SEMICOLON
+
+    NOME  shift, and go to state 38
+    STAR  shift, and go to state 39
+
+    STARSSTAR  go to state 40
+    STARS      go to state 41
+
+
+State 29
+
+   31 DecTipo: STRUCT . NOME STARS NOME SEMICOLON
+
+    NOME  shift, and go to state 42
+
+
+State 30
+
+   26 DecTipos: DecTiposDecTipo .
+
+    $default  reduce using rule 26 (DecTipos)
+
+
+State 31
+
+   23 PERCENTUNIONLBRACESDecTiposRBRACES: PERCENT UNION LBRACES DecTipos . RBRACES
+   25 DecTiposDecTipo: DecTipos . DecTipo
+
+    NOME     shift, and go to state 28
+    RBRACES  shift, and go to state 43
+    STRUCT   shift, and go to state 29
+
+    NOMENOMESEMICOLON  go to state 32
+    DecTipo            go to state 44
+
+
+State 32
+
+   29 DecTipo: NOMENOMESEMICOLON .
+
+    $default  reduce using rule 29 (DecTipo)
+
+
+State 33
+
+   27 DecTipos: DecTipo .
+
+    $default  reduce using rule 27 (DecTipos)
+
+
+State 34
+
+   12 NOMEDOISPONTOSProducoesSEMICOLON: NOME DOISPONTOS . Producoes SEMICOLON
+
+    NOME  shift, and go to state 45
+
+    ProducoesBARRANomes  go to state 46
+    Producoes            go to state 47
+    Nomes                go to state 48
+    Nomes2NOME           go to state 49
+    Nomes2               go to state 50
+
+
+State 35
+
+    2 Secao1PERCPERCRegrasPERCPERC: Secao1 PERCPERC Regras PERCPERC .
+
+    $default  reduce using rule 2 (Secao1PERCPERCRegrasPERCPERC)
+
+
+State 36
+
+    9 RegrasRegra: Regras Regra .
+
+    $default  reduce using rule 9 (RegrasRegra)
+
+
+State 37
+
+   35 PERCENTTYPEMENORQNOMEMAIORQNOME: PERCENT TYPE MENORQ NOME MAIORQ . NOME
+
+    NOME  shift, and go to state 51
+
+
+State 38
+
+   28 NOMENOMESEMICOLON: NOME NOME . SEMICOLON
+
+    SEMICOLON  shift, and go to state 52
+
+
+State 39
+
+   34 STARS: STAR .
+
+    $default  reduce using rule 34 (STARS)
+
+
+State 40
+
+   33 STARS: STARSSTAR .
+
+    $default  reduce using rule 33 (STARS)
+
+
+State 41
+
+   30 DecTipo: NOME STARS . NOME SEMICOLON
+   32 STARSSTAR: STARS . STAR
+
+    NOME  shift, and go to state 53
+    STAR  shift, and go to state 54
+
+
+State 42
+
+   31 DecTipo: STRUCT NOME . STARS NOME SEMICOLON
+
+    STAR  shift, and go to state 39
+
+    STARSSTAR  go to state 40
+    STARS      go to state 55
+
+
+State 43
+
+   23 PERCENTUNIONLBRACESDecTiposRBRACES: PERCENT UNION LBRACES DecTipos RBRACES .
+
+    $default  reduce using rule 23 (PERCENTUNIONLBRACESDecTiposRBRACES)
+
+
+State 44
+
+   25 DecTiposDecTipo: DecTipos DecTipo .
+
+    $default  reduce using rule 25 (DecTiposDecTipo)
+
+
+State 45
+
+   20 Nomes2: NOME .
+
+    $default  reduce using rule 20 (Nomes2)
+
+
+State 46
+
+   15 Producoes: ProducoesBARRANomes .
+
+    $default  reduce using rule 15 (Producoes)
+
+
+State 47
+
+   12 NOMEDOISPONTOSProducoesSEMICOLON: NOME DOISPONTOS Producoes . SEMICOLON
+   14 ProducoesBARRANomes: Producoes . BARRA Nomes
+
+    SEMICOLON  shift, and go to state 56
+    BARRA      shift, and go to state 57
+
+
+State 48
+
+   16 Producoes: Nomes .
+
+    $default  reduce using rule 16 (Producoes)
+
+
+State 49
+
+   19 Nomes2: Nomes2NOME .
+
+    $default  reduce using rule 19 (Nomes2)
+
+
+State 50
+
+   17 Nomes: Nomes2 .
+   18 Nomes2NOME: Nomes2 . NOME
+
+    NOME  shift, and go to state 58
+
+    $default  reduce using rule 17 (Nomes)
+
+
+State 51
+
+   35 PERCENTTYPEMENORQNOMEMAIORQNOME: PERCENT TYPE MENORQ NOME MAIORQ NOME .
+
+    $default  reduce using rule 35 (PERCENTTYPEMENORQNOMEMAIORQNOME)
+
+
+State 52
+
+   28 NOMENOMESEMICOLON: NOME NOME SEMICOLON .
+
+    $default  reduce using rule 28 (NOMENOMESEMICOLON)
+
+
+State 53
+
+   30 DecTipo: NOME STARS NOME . SEMICOLON
+
+    SEMICOLON  shift, and go to state 59
+
+
+State 54
+
+   32 STARSSTAR: STARS STAR .
+
+    $default  reduce using rule 32 (STARSSTAR)
+
+
+State 55
+
+   31 DecTipo: STRUCT NOME STARS . NOME SEMICOLON
+   32 STARSSTAR: STARS . STAR
+
+    NOME  shift, and go to state 60
+    STAR  shift, and go to state 54
+
+
+State 56
+
+   12 NOMEDOISPONTOSProducoesSEMICOLON: NOME DOISPONTOS Producoes SEMICOLON .
+
+    $default  reduce using rule 12 (NOMEDOISPONTOSProducoesSEMICOLON)
+
+
+State 57
+
+   14 ProducoesBARRANomes: Producoes BARRA . Nomes
+
+    NOME  shift, and go to state 45
+
+    Nomes       go to state 61
+    Nomes2NOME  go to state 49
+    Nomes2      go to state 50
+
+
+State 58
+
+   18 Nomes2NOME: Nomes2 NOME .
+
+    $default  reduce using rule 18 (Nomes2NOME)
+
+
+State 59
+
+   30 DecTipo: NOME STARS NOME SEMICOLON .
+
+    $default  reduce using rule 30 (DecTipo)
+
+
+State 60
+
+   31 DecTipo: STRUCT NOME STARS NOME . SEMICOLON
+
+    SEMICOLON  shift, and go to state 62
+
+
+State 61
+
+   14 ProducoesBARRANomes: Producoes BARRA Nomes .
+
+    $default  reduce using rule 14 (ProducoesBARRANomes)
+
+
+State 62
+
+   31 DecTipo: STRUCT NOME STARS NOME SEMICOLON .
+
+    $default  reduce using rule 31 (DecTipo)
